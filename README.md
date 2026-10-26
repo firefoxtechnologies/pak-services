@@ -15,6 +15,10 @@ Files: `index.html` (the whole site) + `assets/logo.jpg`. `serve.js` is only for
 | Logo | replace `assets/logo.jpg` (same file name) |
 | Portfolio photos | section `id="work"` — swap each `<div class="ph">` for `<img src="assets/photo.jpg" alt="..." loading="lazy">` |
 | Testimonials / stats | sections `id="reviews"` and `class="stats"` (placeholders now) |
+| Address, map pin, email, Facebook, Instagram, call number, announcement bar | `CONFIG` block (`address`, `mapLat/mapLng`, `email`, `facebook`, `instagram`, `phoneTel`, `announcement`) |
+| Contact-form email delivery | `CONFIG.formEndpoint` (FormSubmit — click the activation link emailed to `info@thepakservices.com` after the first test submission) |
+| Tax estimator slabs | `SLABS` (update each year after the budget) |
+| Cities / "What we need" checklists | `CITIES`, `DETAILS` |
 | Domain in SEO/social tags | replace `thepakservices.com` in `<meta property="og:...">` and the JSON-LD block |
 
 ## Publish free

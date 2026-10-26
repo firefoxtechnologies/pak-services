@@ -22,7 +22,7 @@
 
 <!-- Structured data for Google -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Pak Services","slogan":"One Platform • Multiple Solutions","url":"https://www.thepakservices.com","telephone":"+92-300-2141517","areaServed":"Pakistan","address":{"@type":"PostalAddress","addressLocality":"Karachi","addressCountry":"PK"}}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Pak Services","slogan":"One Platform • Multiple Solutions","url":"https://www.thepakservices.com","telephone":"+92-300-2141517","areaServed":"Pakistan","address":{"@type":"PostalAddress","streetAddress":"Plot SD-15, Block A, North Nazimabad","addressLocality":"Karachi","postalCode":"74600","addressCountry":"PK"}}
 </script>
 
 <style>
@@ -402,6 +402,12 @@ dialog::backdrop{background:rgba(5,12,30,.65);backdrop-filter:blur(3px)}
 :root[data-theme="dark"] .chip.live{color:var(--gold-2);border-color:var(--gold)}
 .chip.live::before{content:"● ";color:var(--wa)}
 
+.ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;transition:transform .3s}
+.ic svg{width:19px;height:19px;fill:#fff}
+.ic.fb{background:#1877f2}.ic.wa{background:#25d366}
+.ic.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.soc a{display:flex;align-items:center;gap:12px;padding:6px 0}
+.soc a:hover .ic,.info a.row:hover .ic{transform:scale(1.15) rotate(-8deg)}
 /* Floating Call button (sits above WhatsApp) */
 .fab.call{bottom:90px;width:50px;height:50px;background:var(--blue);animation:none}
 .fab.call svg{width:24px;height:24px}
@@ -697,13 +703,16 @@ dialog::backdrop{background:rgba(5,12,30,.65);backdrop-filter:blur(3px)}
           <button class="btn btn-wa" type="submit"><svg class="i" viewBox="0 0 24 24"><use href="#wa"/></svg><span data-i18n="f_send">Send via WhatsApp</span></button>
           <button class="btn btn-outline" type="button" id="mailBtn" data-i18n="f_mail">Send by email</button>
         </div>
+        <input type="text" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <p id="mailMsg" role="status" style="font-size:.88rem;min-height:1.2em"></p>
       </form>
       <div class="info">
-        <a class="row" data-wa="Assalam o Alaikum!" href="#"><span class="e">💬</span><div><b>WhatsApp</b><small id="phoneShow">0300-2141517</small></div></a>
+        <a class="row" data-wa="Assalam o Alaikum!" href="#"><span class="ic wa"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span><div><b>WhatsApp</b><small id="phoneShow">0300-2141517</small></div></a>
         <a class="row" id="mailRow" href="#"><span class="e">✉️</span><div><b>Email</b><small id="mailShow"></small></div></a>
-        <a class="row" id="fbRow" href="#" target="_blank" rel="noopener"><span class="e">📘</span><div><b>Facebook / Instagram</b><small>@Pak Services</small></div></a>
-        <div class="row"><span class="e">📍</span><div><b data-i18n="loc_h">Based in Karachi</b><small data-i18n="loc_s">Growing across Pakistan</small></div></div>
-        <div class="map"><iframe title="Karachi map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Karachi,Pakistan&output=embed"></iframe></div>
+        <a class="row" id="fbRow" href="#" target="_blank" rel="noopener"><span class="ic fb"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#fb"/></svg></span><div><b>Facebook</b><small>pakservicespvtltd</small></div></a>
+        <a class="row" id="igRow" href="#" target="_blank" rel="noopener"><span class="ic ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg></span><div><b>Instagram</b><small>@pakservices2026</small></div></a>
+        <a class="row" id="addrRow" href="#" target="_blank" rel="noopener"><span class="e">📍</span><div><b data-i18n="loc_h">Based in Karachi</b><small id="addrShow"></small><small data-i18n="loc_dir">Tap for directions</small></div></a>
+        <div class="map"><iframe id="mapFrame" title="Pak Services office location on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       </div>
     </div>
   </div>
@@ -716,7 +725,7 @@ dialog::backdrop{background:rgba(5,12,30,.65);backdrop-filter:blur(3px)}
     <div class="foot">
       <div><div class="brand" style="margin-bottom:10px"><img src="assets/logo.jpg" alt="" width="44" height="44" loading="lazy"><span>Pak Services</span></div><p style="font-size:.9rem" data-i18n="foot_tag">One Platform • Multiple Solutions. Your trust, our responsibility.</p></div>
       <div><h4 data-i18n="foot_links">Quick links</h4><a href="#services" data-i18n="nav_services">Services</a><a href="#membership" data-i18n="nav_membership">Membership</a><a href="#faq" data-i18n="nav_faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Contact</a></div>
-      <div><h4 data-i18n="foot_follow">Follow us</h4><a id="fbLink" href="#" target="_blank" rel="noopener">Facebook · Pak Services</a><a id="igLink" href="#" target="_blank" rel="noopener">Instagram · Pak Services</a><a data-wa="Assalam o Alaikum!" href="#">WhatsApp · 0300-2141517</a></div>
+      <div class="soc"><h4 data-i18n="foot_follow">Follow us</h4><a id="fbLink" href="#" target="_blank" rel="noopener"><span class="ic fb"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#fb"/></svg></span>Facebook · Pak Services</a><a id="igLink" href="#" target="_blank" rel="noopener"><span class="ic ig"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg></span>Instagram · Pak Services</a><a data-wa="Assalam o Alaikum!" href="#"><span class="ic wa"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span>WhatsApp · 0300-2141517</a></div>
     </div>
     <p class="copy">© <span id="yr"></span> Pak Services. <span data-i18n="rights">All rights reserved.</span> · www.thepakservices.com</p>
   </div>
@@ -742,7 +751,7 @@ dialog::backdrop{background:rgba(5,12,30,.65);backdrop-filter:blur(3px)}
 <a class="fab" data-wa="Assalam o Alaikum! I need help with a service." href="#" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><use href="#wa"/></svg></a>
 
 <!-- WhatsApp icon (reused) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol><symbol id="ig" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol></svg>
 
 <script>
 /* =====================================================================
@@ -752,9 +761,14 @@ const CONFIG = {
   name: "Pak Services",
   whatsapp: "923002141517",          // ← YOUR WHATSAPP NUMBER: country code, no + or 0 (0300-2141517 → 923002141517)
   displayPhone: "0300-2141517",
-  email: "info@thepakservices.com",     // ← change to your real email
-  facebook: "https://facebook.com/", // ← paste your Facebook page link
-  instagram: "https://instagram.com/", // ← paste your Instagram link
+  email: "info@thepakservices.com",  // ← receives the contact-form emails
+  /* Form-to-email service. FormSubmit is free: the FIRST submission sends an activation email to the
+     address above; click the link in it once and every later enquiry arrives in that inbox. */
+  formEndpoint: "https://formsubmit.co/ajax/info@thepakservices.com",
+  facebook: "https://www.facebook.com/pakservicespvtltd", // ← your Facebook page
+  instagram: "https://www.instagram.com/pakservices2026/", // ← your Instagram page
+  address: "Pak Services, Plot SD-15, Block A, North Nazimabad, Karachi 74600, Pakistan", // ← pinned on the map + directions link
+  mapLat: 24.9305096, mapLng: 67.0359526,   // ← exact Google Maps pin of the office
   phoneTel: "+923002141517",         // ← number used by the "Call now" buttons
   /* Top announcement bar. Set to null to hide it. Change the text for deadlines/offers. */
   announcement: {
@@ -835,7 +849,7 @@ const TIERS = [
 
 /* English + Urdu interface text (keys match data-i18n in the HTML) */
 const I18N = {
-  en:{rot_pre:"We can help with",show_eyebrow:"All our work",show_title:"Everything we do, in one place",nav_tools:"Tax tool",cta_call:"Call now",ann_btn:"Join now",q_title:"Request a free quote",q_sub:"Takes 30 seconds — we reply on WhatsApp.",q_btn:"Get quote",
+  en:{loc_dir:"Tap for directions",mail_wait:"Sending…",mail_ok:"✓ Thank you! Your message was emailed to us. We'll reply soon.",mail_fail:"Couldn't send automatically — opening your email app instead.",rot_pre:"We can help with",show_eyebrow:"All our work",show_title:"Everything we do, in one place",nav_tools:"Tax tool",cta_call:"Call now",ann_btn:"Join now",q_title:"Request a free quote",q_sub:"Takes 30 seconds — we reply on WhatsApp.",q_btn:"Get quote",
     pr1:"Free quote",pr1s:"No obligation",pr2:"Verified providers",pr2s:"Trusted professionals",pr3:"Clear price first",pr3s:"Agreed before work starts",pr4:"WhatsApp support",pr4s:"Quick replies",
     details:"Details",need_h:"What we usually need from you",close:"Close",live:"serving now",cities_title:"Where we serve",cities_lead:"Based in Karachi and growing across Pakistan. Not sure about your city? Just ask.",
     tools_eyebrow:"Free tool",tools_title:"Salary tax estimator",tools_lead:"Get a quick idea of your annual income tax, then let our FBR team file it for you.",calc_label:"Monthly salary (Rs.)",calc_annual:"Annual income",calc_tax:"Annual tax",calc_month:"Monthly tax",calc_net:"Monthly take-home",calc_cta:"File my return with Pak Services",calc_note:"Estimate only, for salaried individuals, based on the slabs set in the website settings (SLABS). Actual tax depends on your full situation — confirm with our team.",
@@ -851,7 +865,7 @@ const I18N = {
     ct_eyebrow:"Get in touch",ct_title:"Contact us today",ct_lead:"Tell us what you need and we'll reply on WhatsApp.",f_name:"Your name",f_phone:"Phone / WhatsApp",f_service:"Service needed",f_msg:"Message (optional)",f_send:"Send via WhatsApp",f_mail:"Send by email",choose:"Choose a service…",
     e_name:"Please enter your name.",e_phone:"Enter a valid Pakistani mobile number (e.g. 0300-2141517).",e_service:"Please choose a service.",loc_h:"Based in Karachi",loc_s:"Growing across Pakistan",
     foot_tag:"One Platform • Multiple Solutions. Your trust, our responsibility.",foot_links:"Quick links",foot_follow:"Follow us",rights:"All rights reserved."},
-  ur:{rot_pre:"ہم مدد کر سکتے ہیں:",show_eyebrow:"ہمارا تمام کام",show_title:"ہم جو کچھ کرتے ہیں، ایک ہی جگہ",nav_tools:"ٹیکس ٹول",cta_call:"ابھی کال کریں",ann_btn:"ابھی شامل ہوں",q_title:"مفت کوٹیشن حاصل کریں",q_sub:"صرف 30 سیکنڈ — ہم واٹس ایپ پر جواب دیں گے۔",q_btn:"کوٹیشن لیں",
+  ur:{loc_dir:"راستے کے لیے ٹیپ کریں",mail_wait:"بھیجا جا رہا ہے…",mail_ok:"✓ شکریہ! آپ کا پیغام ای میل کر دیا گیا۔ ہم جلد جواب دیں گے۔",mail_fail:"خودکار طور پر نہیں بھیجا جا سکا — آپ کی ای میل ایپ کھولی جا رہی ہے۔",rot_pre:"ہم مدد کر سکتے ہیں:",show_eyebrow:"ہمارا تمام کام",show_title:"ہم جو کچھ کرتے ہیں، ایک ہی جگہ",nav_tools:"ٹیکس ٹول",cta_call:"ابھی کال کریں",ann_btn:"ابھی شامل ہوں",q_title:"مفت کوٹیشن حاصل کریں",q_sub:"صرف 30 سیکنڈ — ہم واٹس ایپ پر جواب دیں گے۔",q_btn:"کوٹیشن لیں",
     pr1:"مفت کوٹیشن",pr1s:"کوئی پابندی نہیں",pr2:"تصدیق شدہ فراہم کنندگان",pr2s:"قابلِ اعتماد ماہرین",pr3:"پہلے واضح قیمت",pr3s:"کام سے پہلے طے",pr4:"واٹس ایپ سپورٹ",pr4s:"فوری جواب",
     details:"تفصیل",need_h:"ہمیں عموماً آپ سے کیا چاہیے",close:"بند کریں",live:"سروس جاری",cities_title:"ہم کہاں سروس دیتے ہیں",cities_lead:"کراچی میں قائم اور پورے پاکستان میں پھیلتے ہوئے۔ اپنے شہر کا یقین نہیں؟ بس پوچھیں۔",
     tools_eyebrow:"مفت ٹول",tools_title:"تنخواہ ٹیکس کیلکولیٹر",tools_lead:"اپنے سالانہ انکم ٹیکس کا فوری اندازہ لگائیں، پھر ہماری ایف بی آر ٹیم سے فائل کروائیں۔",calc_label:"ماہانہ تنخواہ (روپے)",calc_annual:"سالانہ آمدن",calc_tax:"سالانہ ٹیکس",calc_month:"ماہانہ ٹیکس",calc_net:"ماہانہ خالص تنخواہ",calc_cta:"پاک سروسز سے ریٹرن فائل کروائیں",calc_note:"صرف اندازہ، تنخواہ دار افراد کے لیے، ویب سائٹ کی سیٹنگز (SLABS) کے مطابق۔ اصل ٹیکس آپ کی مکمل صورتحال پر منحصر ہے — ہماری ٹیم سے تصدیق کریں۔",
@@ -1025,7 +1039,26 @@ function formText(){
          ($("#f-msg").value.trim() ? `\nMessage: ${$("#f-msg").value.trim()}` : "");
 }
 $("#form").addEventListener("submit", e => { e.preventDefault(); if(validate()) window.open(waLink(formText()), "_blank", "noopener"); });
-$("#mailBtn").onclick = () => { if(validate()) location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Service request: "+$("#f-service").value)}&body=${encodeURIComponent(formText())}`; };
+/* "Send by email": delivers the form straight to CONFIG.email through the FormSubmit service
+   (no backend needed). If it fails, it falls back to opening the visitor's own email app. */
+$("#mailBtn").onclick = async () => {
+  if(!validate() || $("#f-honey").value) return;          // honeypot: bots fill the hidden field
+  const btn = $("#mailBtn"), msg = $("#mailMsg"), subject = "Service request: " + $("#f-service").value;
+  btn.disabled = true; msg.style.color = "var(--muted)"; msg.textContent = t("mail_wait");
+  try{
+    const res = await fetch(CONFIG.formEndpoint, {
+      method:"POST", headers:{"Content-Type":"application/json", "Accept":"application/json"},
+      body: JSON.stringify({ name:$("#f-name").value.trim(), phone:$("#f-phone").value.trim(), service:$("#f-service").value,
+        message:$("#f-msg").value.trim(), _subject:subject, _template:"table", _captcha:"false" })
+    });
+    const data = await res.json().catch(() => ({}));
+    if(!res.ok || data.success === false || data.success === "false") throw new Error("send failed");
+    msg.style.color = "var(--green)"; msg.textContent = t("mail_ok"); $("#form").reset();
+  }catch(err){
+    msg.style.color = "#d93025"; msg.textContent = t("mail_fail");
+    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formText())}`;
+  }finally{ btn.disabled = false; }
+};
 
 /* =====================================================================
    ANIMATIONS: slider, marquee, rotating word, logo spin, tilt, counters
@@ -1183,7 +1216,12 @@ document.querySelectorAll("[data-tel]").forEach(a => a.href = "tel:" + CONFIG.ph
 $("#yr").textContent = new Date().getFullYear();
 $("#phoneShow").textContent = CONFIG.displayPhone;
 $("#mailShow").textContent = CONFIG.email; $("#mailRow").href = "mailto:" + CONFIG.email;
-["#fbRow","#fbLink"].forEach(s => $(s).href = CONFIG.facebook); $("#igLink").href = CONFIG.instagram;
+["#fbRow","#fbLink"].forEach(s => $(s).href = CONFIG.facebook); $("#igLink").href = CONFIG.instagram; $("#igRow").href = CONFIG.instagram;
+/* Pin the office on the map and link to Google Maps directions */
+const pin = CONFIG.mapLat + "," + CONFIG.mapLng;
+$("#mapFrame").src = "https://maps.google.com/maps?q=" + pin + "&z=17&output=embed";
+$("#addrRow").href = "https://www.google.com/maps/search/?api=1&query=" + pin;
+$("#addrShow").textContent = CONFIG.address.replace(/^Pak Services, /, "");
 bindWA(); applyLang();
 </script>
 </body>
